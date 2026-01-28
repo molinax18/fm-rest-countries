@@ -11,3 +11,25 @@
 
   --font-nunito-sans: "Nunito Sans", sans-serif;
 }
+
+@layer components {
+  .container {
+    @apply w-full max-w-7xl mx-auto py-6 px-2 md:px-6 lg:px-8 xl:px-10;
+  }
+
+  .bg-dark {
+    @apply bg-blue-950 text-white;
+  }
+
+  .bg-light {
+    @apply bg-white text-grey-950;
+  }
+
+  .bg-semi-dark {
+    @apply bg-blue-900 text-white;
+  }
+
+  .bg-semi-light {
+    @apply bg-grey-50 text-grey-950;
+  }
+}
