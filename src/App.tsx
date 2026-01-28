@@ -1,12 +1,14 @@
 import { useThemeContext } from "./contexts/ThemeContext";
+import Header from "./components/Header";
 
 function App() {
-  const { theme } = useThemeContext();
-  const background = theme === "dark" ? "bg-dark" : "bg-semi-light";
+  const { backgroundTheme } = useThemeContext();
 
   return (
-    <div className={`min-w-dvh min-h-dvh grid grid-rows-3 ${background}`}>
-      App
+    <div className={`min-w-dvw min-h-dvh ${backgroundTheme.fill}`}>
+      <div className={`grid grid-rows-[max_content, max_content, 1fr]`}>
+        <Header />
+      </div>
     </div>
   );
 }
