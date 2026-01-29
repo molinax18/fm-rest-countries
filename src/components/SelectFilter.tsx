@@ -38,7 +38,7 @@ export default function SelectFilter({
         <ul
           id="region-listbox"
           role="listbox"
-          className={`absolute left-0 flex flex-col gap-y-3 w-full mt-6 input-base ${backgroundTheme.semi}`}
+          className={`absolute left-0 flex flex-col gap-y-3 w-full mt-3 input-base ${backgroundTheme.semi}`}
         >
           {options.map((op, index) => (
             <li role="option" key={index} className="cursor-pointer">
