@@ -1,10 +1,8 @@
 import { useThemeContext } from "@/contexts/ThemeContext";
-import { capitalize } from "@/utils/capitalize";
-import { BsMoon, BsSun } from "react-icons/bs";
+import ThemeButton from "./ThemeButton";
 
 export default function Header() {
-  const { theme, backgroundTheme } = useThemeContext();
-  const themeIcon = theme === "light" ? <BsMoon /> : <BsSun />;
+  const { theme, backgroundTheme, toggleTheme } = useThemeContext();
 
   return (
     <header
@@ -12,9 +10,11 @@ export default function Header() {
     >
       <h1>Where in the world?</h1>
 
-      <button className="flex items-center gap-x-2">
-        {themeIcon} {capitalize(theme === "light" ? "dark" : "light")} Mode
-      </button>
+      <ThemeButton
+        theme={theme}
+        onClick={toggleTheme}
+        className="flex items-center gap-x-2 cursor-pointer"
+      />
     </header>
   );
 }
