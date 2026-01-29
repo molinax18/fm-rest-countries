@@ -32,4 +32,8 @@
   .bg-semi-light {
     @apply bg-grey-50 text-grey-950;
   }
+
+  .input-base {
+    @apply py-3 px-8 rounded-md;
+  }
 }
