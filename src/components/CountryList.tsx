@@ -6,8 +6,8 @@ interface Props {
 }
 
 export default function CountryList({ maxDisplay = 7 }: Props) {
-  const { countries } = useCountriesContext();
-  const countriesToDisplay = countries.slice(0, maxDisplay);
+  const { filteredCountries } = useCountriesContext();
+  const countriesToDisplay = filteredCountries.slice(0, maxDisplay);
 
   return (
     <section className="container grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-8">

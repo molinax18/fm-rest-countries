@@ -8,7 +8,7 @@ function App() {
   const { backgroundTheme } = useThemeContext();
 
   return (
-    <div className={`min-w-vw min-h-vh ${backgroundTheme.fill}`}>
+    <div className={`min-w-vw min-h-dvh ${backgroundTheme.fill}`}>
       <div className={`grid grid-rows-[max_content, max_content, 1fr]`}>
         <Header />
         <CountriesProvider>

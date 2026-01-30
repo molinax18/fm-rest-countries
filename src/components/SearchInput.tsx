@@ -1,5 +1,6 @@
-import { useThemeContext } from "@/contexts/ThemeContext";
 import type { ChangeEvent } from "react";
+import { useCountriesContext } from "@/contexts/CountriesContext";
+import { useThemeContext } from "@/contexts/ThemeContext";
 import { BsSearch } from "react-icons/bs";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function SearchInput({ placeholder, value, onChange }: Props) {
+  const { filterByCountryName } = useCountriesContext();
   const { backgroundTheme } = useThemeContext();
 
   return (
@@ -23,7 +25,10 @@ export default function SearchInput({ placeholder, value, onChange }: Props) {
         className="grow outline-none placeholder:text-inherit"
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={(event) => {
+          onChange(event);
+          filterByCountryName(value);
+        }}
       />
     </label>
   );

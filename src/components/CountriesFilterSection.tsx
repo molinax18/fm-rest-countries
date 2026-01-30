@@ -8,7 +8,7 @@ const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 export default function CountriesFilterSection() {
   const [search, setSearch] = useState("");
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
-    return setSearch(event.target.value);
+    setSearch(event.target.value);
   }
 
   return (
