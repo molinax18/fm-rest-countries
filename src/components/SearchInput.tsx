@@ -4,11 +4,10 @@ import { BsSearch } from "react-icons/bs";
 
 interface Props {
   placeholder?: string;
-  value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchInput({ placeholder, value, onChange }: Props) {
+export default function SearchInput({ placeholder, onChange }: Props) {
   const { backgroundTheme } = useThemeContext();
 
   return (
@@ -22,7 +21,6 @@ export default function SearchInput({ placeholder, value, onChange }: Props) {
         type="text"
         className="grow outline-none placeholder:text-inherit"
         placeholder={placeholder}
-        value={value}
         onChange={onChange}
       />
     </label>
