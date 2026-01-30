@@ -29,7 +29,7 @@ export default function SelectFilter({
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-controls="region-listbox"
-        className="flex items-center justify-between gap-x-4 input-base cursor-pointer"
+        className="flex items-center justify-between gap-x-4 interactive-shape cursor-pointer"
         onClick={toggleMenu}
       >
         {label}
@@ -39,7 +39,7 @@ export default function SelectFilter({
         <ul
           id="region-listbox"
           role="listbox"
-          className={`absolute left-0 flex flex-col gap-y-3 w-full mt-3 input-base ${backgroundTheme.semi}`}
+          className={`absolute left-0 flex flex-col gap-y-3 w-full mt-3 interactive-shape ${backgroundTheme.semi}`}
         >
           {options.map((op, index) => (
             <li

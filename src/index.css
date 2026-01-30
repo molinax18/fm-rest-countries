@@ -33,7 +33,7 @@
     @apply bg-grey-50 text-grey-950;
   }
 
-  .input-base {
+  .interactive-shape {
     @apply py-3 px-8 rounded-md;
   }
 }

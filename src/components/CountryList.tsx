@@ -10,7 +10,7 @@ export default function CountryList({ maxDisplay = 7 }: Props) {
   const countriesToDisplay = filteredCountries.slice(0, maxDisplay);
 
   return (
-    <section className="container grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-8">
+    <section className="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-8">
       {countriesToDisplay.length === 0 ? (
         <span>Countries not found.</span>
       ) : (

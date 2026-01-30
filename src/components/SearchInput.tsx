@@ -13,7 +13,7 @@ export default function SearchInput({ placeholder, onChange }: Props) {
   return (
     <label
       htmlFor="search"
-      className={`flex items-center gap-x-8 input-base ${backgroundTheme.semi}`}
+      className={`flex items-center gap-x-8 interactive-shape ${backgroundTheme.semi}`}
     >
       <BsSearch />
       <input

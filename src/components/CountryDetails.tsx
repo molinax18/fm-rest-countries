@@ -1,5 +1,6 @@
-import { useThemeContext } from "@/contexts/ThemeContext";
 import type { Country } from "@/types/country";
+import { useNavigationContext } from "@/contexts/NavigationContext";
+import { useThemeContext } from "@/contexts/ThemeContext";
 
 export default function CountryDetails({
   flag,
@@ -8,11 +9,13 @@ export default function CountryDetails({
   region,
   capital,
 }: Country) {
+  const { navigateTo } = useNavigationContext();
   const { backgroundTheme } = useThemeContext();
 
   return (
     <article
-      className={`flex flex-col rounded-md overflow-hidden ${backgroundTheme.semi}`}
+      className={`flex flex-col rounded-md overflow-hidden cursor-pointer ${backgroundTheme.semi}`}
+      onClick={() => navigateTo("details")}
     >
       <header className="flex-1">
         <img src={flag} alt={`${name} flag`} className="object-cover h-full" />

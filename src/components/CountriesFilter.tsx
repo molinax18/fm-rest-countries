@@ -5,7 +5,7 @@ import { regions } from "@/constants/region";
 import SearchInput from "./SearchInput";
 import SelectFilter from "./SelectFilter";
 
-export default function CountriesFilterSection() {
+export default function CountriesFilter() {
   const { filterByCountryName, filterByRegion } = useCountriesContext();
 
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
@@ -17,7 +17,7 @@ export default function CountriesFilterSection() {
   }
 
   return (
-    <section className="flex flex-col gap-y-6 sm:flex-row sm:justify-between container">
+    <section className="flex flex-col gap-y-6 sm:flex-row sm:justify-between">
       <SearchInput
         onChange={handleSearch}
         placeholder="Search for a country..."
