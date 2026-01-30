@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
 import type { CountriesState } from "@/types/countriesContext";
 import type { Country } from "@/types/country";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import { regions } from "@/constants/region";
 import Fuse from "fuse.js";
 import data from "../../data.json";
 
@@ -13,6 +14,7 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
     keys: ["name"],
     threshold: 0.3,
   });
+
   function filterByCountryName(value: string) {
     if (!value) {
       setFilteredCountries(countries);
@@ -23,12 +25,20 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
     setFilteredCountries(results.map((result) => result.item));
   }
 
+  function filterByRegion(region: string) {
+    if (!regions.includes(region)) return;
+
+    const newCountries = countries.filter((c) => c.region === region);
+    setFilteredCountries(newCountries);
+  }
+
   return (
     <CountriesContext.Provider
       value={{
         filterByCountryName,
         filteredCountries,
         setFilteredCountries,
+        filterByRegion,
       }}
     >
       {children}

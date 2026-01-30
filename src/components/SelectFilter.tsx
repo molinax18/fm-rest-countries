@@ -1,16 +1,18 @@
-import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useThemeContext } from "@/contexts/ThemeContext";
 
-interface Props extends ComponentPropsWithoutRef<"div"> {
+interface Props {
+  className?: string;
+  onChange: (value: string) => void;
   label: ReactNode;
   options: Array<string>;
 }
 
 export default function SelectFilter({
   className,
+  onChange,
   label,
   options,
-  ...props
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const { backgroundTheme } = useThemeContext();
@@ -21,7 +23,6 @@ export default function SelectFilter({
   return (
     <div
       className={`relative rounded-md ${backgroundTheme.semi} ${className ?? ""}`}
-      {...props}
     >
       <button
         type="button"
@@ -41,7 +42,12 @@ export default function SelectFilter({
           className={`absolute left-0 flex flex-col gap-y-3 w-full mt-3 input-base ${backgroundTheme.semi}`}
         >
           {options.map((op, index) => (
-            <li role="option" key={index} className="cursor-pointer">
+            <li
+              role="option"
+              key={index}
+              className="cursor-pointer"
+              onClick={() => onChange(op)}
+            >
               {op}
             </li>
           ))}

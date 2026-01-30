@@ -12,8 +12,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(initialThemeValue);
 
   const backgroundTheme = {
-    fill: theme === "light" ? "bg-light" : "bg-dark",
-    semi: theme === "light" ? "bg-semi-light" : "bg-semi-dark",
+    fill: theme === "light" ? "bg-semi-light" : "bg-dark",
+    semi: theme === "light" ? "bg-light" : "bg-semi-dark",
   };
 
   function toggleTheme() {

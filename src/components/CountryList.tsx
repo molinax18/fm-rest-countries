@@ -11,9 +11,11 @@ export default function CountryList({ maxDisplay = 7 }: Props) {
 
   return (
     <section className="container grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-8">
-      {countriesToDisplay.map((c) => (
-        <CountryDetails key={c.name} {...c} />
-      ))}
+      {countriesToDisplay.length === 0 ? (
+        <span>Countries not found.</span>
+      ) : (
+        countriesToDisplay.map((c) => <CountryDetails key={c.name} {...c} />)
+      )}
     </section>
   );
 }

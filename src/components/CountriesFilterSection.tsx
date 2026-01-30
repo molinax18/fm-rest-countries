@@ -1,14 +1,21 @@
 import { useState, type ChangeEvent } from "react";
+import { useCountriesContext } from "@/contexts/CountriesContext";
 import { BsArrowDownShort } from "react-icons/bs";
+import { regions } from "@/constants/region";
 import SearchInput from "./SearchInput";
 import SelectFilter from "./SelectFilter";
 
-const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
-
 export default function CountriesFilterSection() {
+  const { filterByCountryName, filterByRegion } = useCountriesContext();
   const [search, setSearch] = useState("");
+
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
     setSearch(event.target.value);
+    filterByCountryName(search);
+  }
+
+  function handleRegion(region: string) {
+    filterByRegion(region);
   }
 
   return (
@@ -20,6 +27,7 @@ export default function CountriesFilterSection() {
       />
 
       <SelectFilter
+        onChange={handleRegion}
         className="w-max"
         options={regions}
         label={
