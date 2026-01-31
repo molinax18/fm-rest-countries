@@ -15,11 +15,15 @@ export default function CountryDetailsCard({
 
   return (
     <article
-      className={`flex flex-col rounded-md overflow-hidden cursor-pointer ${backgroundTheme.semi}`}
+      className={`flex flex-col rounded-md overflow-hidden cursor-pointer tr-opacity ${backgroundTheme.semi}`}
       onClick={() => navigateToDetails(alpha3Code)}
     >
       <header className="flex-1">
-        <img src={flag} alt={`${name} flag`} className="object-cover h-full" />
+        <img
+          src={flag}
+          alt={`${name} flag`}
+          className="object-cover h-48 w-full"
+        />
       </header>
       <section className="flex flex-col gap-y-3 py-8 px-4">
         <h3 className="font-bold text-xl">{name}</h3>

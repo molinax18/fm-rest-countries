@@ -70,7 +70,7 @@ export default function CountryInfo({
                 <button
                   key={b}
                   onClick={() => navigateToDetails(b)}
-                  className={`interactive-shape cursor-pointer ${backgroundTheme.semi}`}
+                  className={`interactive-shape cursor-pointer tr-opacity ${backgroundTheme.semi}`}
                 >
                   {getCountryNameByAlphaCode(b)}
                 </button>

@@ -29,7 +29,7 @@ export default function SelectFilter({
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-controls="region-listbox"
-        className="flex items-center justify-between gap-x-4 interactive-shape cursor-pointer"
+        className="flex items-center justify-between gap-x-4 interactive-shape cursor-pointer tr-opacity"
         onClick={toggleMenu}
       >
         {label}
@@ -45,7 +45,7 @@ export default function SelectFilter({
             <li
               role="option"
               key={index}
-              className="cursor-pointer"
+              className="cursor-pointer tr-opacity"
               onClick={() => onChange(op)}
             >
               {op}

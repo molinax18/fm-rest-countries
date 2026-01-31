@@ -19,7 +19,7 @@ export default function CountryDetailsSection({
       <nav>
         <button
           onClick={() => navigateToHome()}
-          className={`interactive-shape flex items-center gap-x-3 cursor-pointer ${backgroundTheme.semi}`}
+          className={`interactive-shape flex items-center gap-x-3 cursor-pointer tr-opacity ${backgroundTheme.semi}`}
         >
           <BsArrowLeft />
           Back

@@ -36,4 +36,8 @@
   .interactive-shape {
     @apply py-3 px-8 rounded-md;
   }
+
+  .tr-opacity {
+    @apply transition hover:opacity-70;
+  }
 }
