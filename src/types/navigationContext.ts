@@ -1,6 +1,14 @@
-export type View = "home" | "details";
+export type View =
+  | {
+      type: "home";
+    }
+  | {
+      type: "details";
+      alphaCode: string;
+    };
 
 export interface NavigationState {
   view: View;
-  navigateTo: (view: View) => void;
+  navigateToHome: () => void;
+  navigateToDetails: (alphaCode: string) => void;
 }

@@ -1,5 +1,5 @@
 import { useCountriesContext } from "@/contexts/CountriesContext";
-import CountryDetails from "./CountryDetails";
+import CountryDetailsCard from "./CountryDetailsCard";
 
 interface Props {
   maxDisplay?: number;
@@ -14,7 +14,9 @@ export default function CountryList({ maxDisplay = 7 }: Props) {
       {countriesToDisplay.length === 0 ? (
         <span>Countries not found.</span>
       ) : (
-        countriesToDisplay.map((c) => <CountryDetails key={c.name} {...c} />)
+        countriesToDisplay.map((c) => (
+          <CountryDetailsCard key={c.name} {...c} />
+        ))
       )}
     </section>
   );

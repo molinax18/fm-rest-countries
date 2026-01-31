@@ -6,4 +6,6 @@ export interface CountriesState {
   setFilteredCountries: Dispatch<SetStateAction<Country[]>>;
   filterByCountryName: (value: string) => void;
   filterByRegion: (region: string) => void;
+  getCountryByAlphaCode: (alphaCode: string) => Country | null;
+  getCountryNameByAlphaCode: (code: string) => string;
 }

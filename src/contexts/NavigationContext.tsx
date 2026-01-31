@@ -4,14 +4,18 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 const NavigationContext = createContext<NavigationState | null>(null);
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [view, setView] = useState<View>("home");
+  const [view, setView] = useState<View>({ type: "home" });
 
-  function navigateTo(view: View) {
-    setView(view);
+  function navigateToHome() {
+    setView({ type: "home" });
+  }
+
+  function navigateToDetails(alphaCode: string) {
+    setView({ type: "details", alphaCode });
   }
 
   return (
-    <NavigationContext value={{ view, navigateTo }}>
+    <NavigationContext value={{ view, navigateToHome, navigateToDetails }}>
       {children}
     </NavigationContext>
   );

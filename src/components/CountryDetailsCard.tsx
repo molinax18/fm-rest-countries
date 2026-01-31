@@ -2,20 +2,21 @@ import type { Country } from "@/types/country";
 import { useNavigationContext } from "@/contexts/NavigationContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
 
-export default function CountryDetails({
+export default function CountryDetailsCard({
   flag,
   name,
   population,
   region,
   capital,
+  alpha3Code,
 }: Country) {
-  const { navigateTo } = useNavigationContext();
+  const { navigateToDetails } = useNavigationContext();
   const { backgroundTheme } = useThemeContext();
 
   return (
     <article
       className={`flex flex-col rounded-md overflow-hidden cursor-pointer ${backgroundTheme.semi}`}
-      onClick={() => navigateTo("details")}
+      onClick={() => navigateToDetails(alpha3Code)}
     >
       <header className="flex-1">
         <img src={flag} alt={`${name} flag`} className="object-cover h-full" />

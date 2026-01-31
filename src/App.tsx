@@ -10,12 +10,12 @@ function App() {
   const { backgroundTheme } = useThemeContext();
 
   function handleViews() {
-    switch (view) {
+    switch (view.type) {
       case "home":
         return <AllCountriesSection />;
 
       case "details":
-        return <CountryDetailsSection />;
+        return <CountryDetailsSection alphaCode={view.alphaCode} />;
     }
   }
 
