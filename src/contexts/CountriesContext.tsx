@@ -40,6 +40,10 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
     return countries.find((c) => c.alpha3Code === alphaCode)?.name ?? alphaCode;
   }
 
+  function reset() {
+    setFilteredCountries(countries);
+  }
+
   return (
     <CountriesContext.Provider
       value={{
@@ -49,6 +53,7 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
         filterByRegion,
         getCountryByAlphaCode,
         getCountryNameByAlphaCode,
+        reset,
       }}
     >
       {children}

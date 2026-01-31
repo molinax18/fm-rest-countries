@@ -8,4 +8,5 @@ export interface CountriesState {
   filterByRegion: (region: string) => void;
   getCountryByAlphaCode: (alphaCode: string) => Country | null;
   getCountryNameByAlphaCode: (code: string) => string;
+  reset: () => void;
 }
