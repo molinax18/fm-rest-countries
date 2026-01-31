@@ -29,7 +29,8 @@ export default function CountryDetailsCard({
         <h3 className="font-bold text-xl">{name}</h3>
         <ul>
           <li>
-            <span className="font-semibold">Population:</span> {population}
+            <span className="font-semibold">Population:</span>{" "}
+            {population.toLocaleString("en-US")}
           </li>
           <li>
             <span className="font-semibold">Region:</span> {region}

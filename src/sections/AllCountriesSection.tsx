@@ -3,7 +3,7 @@ import CountryList from "@/components/CountryList";
 
 export default function AllCountriesSection() {
   return (
-    <div className="flex flex-col gap-y-6 container">
+    <div className="flex flex-col gap-y-12 container">
       <CountriesFilter />
       <CountryList />
     </div>

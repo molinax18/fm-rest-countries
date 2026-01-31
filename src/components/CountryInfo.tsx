@@ -25,9 +25,9 @@ export default function CountryInfo({
       <img
         src={flag}
         alt={name}
-        className="flex-2 object-contain max-h-72 lg:max-w-2xl"
+        className="self-start flex-1 object-contain max-h-72 lg:max-w-2xl xl:max-h-96"
       />
-      <article className="flex-1 flex flex-col gap-y-4 lg:justify-center">
+      <article className="flex-1 flex flex-col gap-y-6 lg:justify-center">
         <h1 className="text-3xl font-bold">{name}</h1>
         <ul className="grid gap-6 sm:grid-cols-2">
           <div className="flex flex-col gap-y-2 [&_span]:font-semibold">
@@ -35,7 +35,7 @@ export default function CountryInfo({
               <span>Native name</span>: {nativeName}
             </li>
             <li>
-              <span>Population</span>: {population}
+              <span>Population</span>: {population.toLocaleString("en-US")}
             </li>
             <li>
               <span>Region</span>: {region}
