@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useCountriesContext } from "@/contexts/CountriesContext";
 import { useNavigationContext } from "@/contexts/NavigationContext";
 import AllCountriesSection from "@/sections/AllCountriesSection";
@@ -7,9 +8,12 @@ export default function Views() {
   const { view } = useNavigationContext();
   const { reset } = useCountriesContext();
 
+  useEffect(() => {
+    if (view.type === "home") reset();
+  }, [view.type, reset]);
+
   switch (view.type) {
     case "home":
-      reset();
       return <AllCountriesSection />;
 
     case "details":

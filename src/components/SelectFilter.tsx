@@ -1,5 +1,9 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useThemeContext } from "@/contexts/ThemeContext";
+import Dropdown from "./ui/dropdown/Dropdown";
+import DropdownTrigger from "./ui/dropdown/DropdownTrigger";
+import DropdownMenu from "./ui/dropdown/DropdownMenu";
+import FilterOptions from "./FilterOptions";
 
 interface Props {
   className?: string;
@@ -14,45 +18,23 @@ export default function SelectFilter({
   label,
   options,
 }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
   const { backgroundTheme } = useThemeContext();
-  function toggleMenu() {
-    setIsOpen((prev) => !prev);
-  }
 
   return (
-    <div
-      className={`relative rounded-md ${backgroundTheme.semi} ${className ?? ""}`}
+    <Dropdown
+      className={`rounded-md ${backgroundTheme.semi} ${className ?? ""}`}
     >
-      <button
+      <DropdownTrigger
         type="button"
         aria-haspopup="listbox"
-        aria-expanded={isOpen}
         aria-controls="region-listbox"
         className="flex items-center justify-between gap-x-4 interactive-shape cursor-pointer tr-opacity"
-        onClick={toggleMenu}
       >
         {label}
-      </button>
-
-      {isOpen && (
-        <ul
-          id="region-listbox"
-          role="listbox"
-          className={`absolute left-0 flex flex-col gap-y-3 w-full mt-3 interactive-shape ${backgroundTheme.semi}`}
-        >
-          {options.map((op, index) => (
-            <li
-              role="option"
-              key={index}
-              className="cursor-pointer tr-opacity"
-              onClick={() => onChange(op)}
-            >
-              {op}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      </DropdownTrigger>
+      <DropdownMenu>
+        <FilterOptions options={options} onChange={onChange} />
+      </DropdownMenu>
+    </Dropdown>
   );
 }
