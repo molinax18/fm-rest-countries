@@ -5,7 +5,7 @@ interface Props {
   maxDisplay?: number;
 }
 
-export default function CountryList({ maxDisplay = 7 }: Props) {
+export default function CountryList({ maxDisplay = 10 }: Props) {
   const { filteredCountries } = useCountriesContext();
   const countriesToDisplay = filteredCountries.slice(0, maxDisplay);
 

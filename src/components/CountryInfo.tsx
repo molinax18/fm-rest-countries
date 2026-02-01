@@ -20,13 +20,13 @@ export default function CountryInfo({
   const { navigateToDetails } = useNavigationContext();
 
   return (
-    <section className="flex flex-col gap-10 lg:flex-row lg:justify-center">
+    <section className="flex flex-col gap-10 lg:flex-row lg:justify-center xl:gap-20">
       <img
         src={flags.svg}
         alt={flags.alt}
-        className="self-start flex-1 object-contain max-h-72 lg:max-w-2xl xl:max-h-96"
+        className="self-start object-cover max-h-72 lg:max-w-104]"
       />
-      <article className="flex-1 flex flex-col gap-y-6 lg:justify-center">
+      <article className="flex flex-col gap-y-6 lg:max-w-1/2 lg:justify-center">
         <h1 className="text-3xl font-bold">{name.common}</h1>
         <ul className="grid gap-6 sm:grid-cols-2">
           <div className="flex flex-col gap-y-2 [&_span]:font-semibold">
