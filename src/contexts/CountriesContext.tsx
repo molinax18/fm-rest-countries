@@ -1,9 +1,16 @@
 import type { CountriesState } from "@/types/countriesContext";
 import type { Country } from "@/types/country";
-import { createContext, useContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import { regions } from "@/constants/region";
 import Fuse from "fuse.js";
 import data from "../../data.json";
+import { getCountries } from "@/services/countriesApi";
 
 const countries = data as Country[];
 const CountriesContext = createContext<CountriesState | null>(null);
@@ -14,6 +21,10 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
     keys: ["name"],
     threshold: 0.3,
   });
+
+  useEffect(() => {
+    getCountries();
+  }, []);
 
   function filterByCountryName(value: string) {
     if (!value) {
