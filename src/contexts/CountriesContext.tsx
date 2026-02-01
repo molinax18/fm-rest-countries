@@ -1,34 +1,30 @@
 import type { CountriesState } from "@/types/countriesContext";
-import type { Country } from "@/types/country";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import type { CountryResponse } from "@/types/country";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getCountries } from "@/services/countriesApi";
 import { regions } from "@/constants/region";
 import Fuse from "fuse.js";
 import data from "../../data.json";
-import { getCountries } from "@/services/countriesApi";
 
-const countries = data as Country[];
+const countries: CountryResponse[] = data;
 const CountriesContext = createContext<CountriesState | null>(null);
 
 export function CountriesProvider({ children }: { children: ReactNode }) {
-  const [filteredCountries, setFilteredCountries] = useState(countries);
-  const fuse = new Fuse(countries, {
+  const { data } = useQuery({
+    queryKey: ["countries"],
+    queryFn: getCountries,
+    initialData: countries,
+  });
+  const [filteredCountries, setFilteredCountries] = useState(data);
+  const fuse = new Fuse(data, {
     keys: ["name"],
     threshold: 0.3,
   });
 
-  useEffect(() => {
-    getCountries();
-  }, []);
-
   function filterByCountryName(value: string) {
     if (!value) {
-      setFilteredCountries(countries);
+      setFilteredCountries(data);
       return;
     }
 
@@ -39,20 +35,21 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
   function filterByRegion(region: string) {
     if (!regions.includes(region)) return;
 
-    const newCountries = countries.filter((c) => c.region === region);
+    const newCountries = data.filter((c) => c.region === region);
     setFilteredCountries(newCountries);
   }
 
-  function getCountryByAlphaCode(alphaCode: string) {
-    return countries.find((c) => c.alpha3Code === alphaCode) ?? null;
+  function getCountryByCode(cca3: string) {
+    return data.find((c) => c.cca3 === cca3) ?? null;
   }
 
-  function getCountryNameByAlphaCode(alphaCode: string) {
-    return countries.find((c) => c.alpha3Code === alphaCode)?.name ?? alphaCode;
+  function getCountryNameByCode(cca3: string) {
+    const country = data.find((c) => c.cca3 === cca3);
+    return country ? country.name.common : cca3;
   }
 
   function reset() {
-    setFilteredCountries(countries);
+    setFilteredCountries(data);
   }
 
   return (
@@ -62,8 +59,8 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
         filteredCountries,
         setFilteredCountries,
         filterByRegion,
-        getCountryByAlphaCode,
-        getCountryNameByAlphaCode,
+        getCountryByCode,
+        getCountryNameByCode,
         reset,
       }}
     >

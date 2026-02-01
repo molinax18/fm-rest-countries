@@ -4,11 +4,11 @@ export type View =
     }
   | {
       type: "details";
-      alphaCode: string;
+      cca3: string;
     };
 
 export interface NavigationState {
   view: View;
   navigateToHome: () => void;
-  navigateToDetails: (alphaCode: string) => void;
+  navigateToDetails: (cca3: string) => void;
 }

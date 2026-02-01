@@ -1,18 +1,14 @@
-import CountryInfo from "@/components/CountryInfo";
 import { useCountriesContext } from "@/contexts/CountriesContext";
 import { useNavigationContext } from "@/contexts/NavigationContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
 import { BsArrowLeft } from "react-icons/bs";
+import CountryInfo from "@/components/CountryInfo";
 
-export default function CountryDetailsSection({
-  alphaCode,
-}: {
-  alphaCode: string;
-}) {
-  const { getCountryByAlphaCode } = useCountriesContext();
+export default function CountryDetailsSection({ cca3 }: { cca3: string }) {
+  const { getCountryByCode } = useCountriesContext();
   const { navigateToHome } = useNavigationContext();
   const { backgroundTheme } = useThemeContext();
-  const country = getCountryByAlphaCode(alphaCode);
+  const country = getCountryByCode(cca3);
 
   return (
     <div className="container flex flex-col gap-y-16">

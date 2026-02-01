@@ -17,6 +17,6 @@ export default function Views() {
       return <AllCountriesSection />;
 
     case "details":
-      return <CountryDetailsSection alphaCode={view.alphaCode} />;
+      return <CountryDetailsSection cca3={view.cca3} />;
   }
 }

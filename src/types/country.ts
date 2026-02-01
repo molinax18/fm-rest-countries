@@ -1,76 +1,132 @@
-export interface Country {
-  name: string;
-  topLevelDomain: string[];
-  alpha2Code: string;
-  alpha3Code: string;
-  callingCodes: string[];
-  capital?: string;
-  altSpellings: string[];
-  subregion: string;
-  region: string;
-  population: number;
-  latlng: number[];
-  demonym: string;
-  area?: number;
-  timezones: string[];
-  borders?: string[];
-  nativeName: string;
-  numericCode: string;
+export interface CountryResponse {
+  name: Name;
   flags: Flags;
-  currencies?: Currency[];
-  languages: Language[];
-  translations: Translations;
-  flag: string;
-  regionalBlocs?: RegionalBloc[];
-  cioc?: string;
-  independent: boolean;
+  population: number;
+  region: string;
+  subregion: string;
+  capital: string[];
+  tld: string[];
+  currencies: Currencies;
+  languages: Languages;
+  borders: string[];
+  cca3: string;
+}
+
+export interface Name {
+  common: string;
+  official: string;
+  nativeName: NativeName;
+}
+
+export interface NativeName {
+  deu?: Deu;
+  por?: Por;
+  jpn?: Jpn;
+  eng?: Eng;
+  fra?: Fra;
+  hin?: Hin;
+  ita?: Ita;
+}
+
+export interface Deu {
+  official: string;
+  common: string;
+}
+
+export interface Por {
+  official: string;
+  common: string;
+}
+
+export interface Jpn {
+  official: string;
+  common: string;
+}
+
+export interface Eng {
+  official: string;
+  common: string;
+}
+
+export interface Fra {
+  official: string;
+  common: string;
+}
+
+export interface Hin {
+  official: string;
+  common: string;
+}
+
+export interface Ita {
+  official: string;
+  common: string;
 }
 
 export interface Flags {
-  svg: string;
   png: string;
+  svg: string;
+  alt: string;
 }
 
-export interface Currency {
-  code: string;
+export interface Currencies {
+  EUR?: Eur;
+  BRL?: Brl;
+  JPY?: Jpy;
+  USD?: Usd;
+  INR?: Inr;
+  ZAR?: Zar;
+  CAD?: Cad;
+  AUD?: Aud;
+}
+
+export interface Eur {
   name: string;
   symbol: string;
 }
 
-export interface Language {
-  iso639_1?: string;
-  iso639_2: string;
+export interface Brl {
   name: string;
-  nativeName?: string;
+  symbol: string;
 }
 
-export interface Translations {
-  [key: string]: string;
-}
-
-export interface RegionalBloc {
-  acronym: string;
+export interface Jpy {
   name: string;
+  symbol: string;
 }
 
-export interface CountryResponse {
-  name: {
-    common: string;
-    official: string;
-    nativeName?: { [key: string]: { official: string; common: string } };
-  };
-  flags: {
-    png: string;
-    svg: string;
-    alt?: string;
-  };
-  population: number;
-  region: string;
-  subregion?: string;
-  capital?: string[];
-  tld?: string[];
-  currencies?: { [key: string]: { name: string; symbol: string } };
-  languages?: { [key: string]: string };
-  borders?: string[];
-  cca3: string;
+export interface Usd {
+  name: string;
+  symbol: string;
+}
+
+export interface Inr {
+  name: string;
+  symbol: string;
+}
+
+export interface Zar {
+  name: string;
+  symbol: string;
+}
+
+export interface Cad {
+  name: string;
+  symbol: string;
+}
+
+export interface Aud {
+  name: string;
+  symbol: string;
+}
+
+export interface Languages {
+  deu?: string;
+  por?: string;
+  jpn?: string;
+  eng?: string;
+  fra?: string;
+  hin?: string;
+  afr?: string;
+  ita?: string;
 }

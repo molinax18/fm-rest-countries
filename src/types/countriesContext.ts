@@ -1,12 +1,12 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Country } from "./country";
+import type { CountryResponse } from "./country";
 
 export interface CountriesState {
-  filteredCountries: Country[];
-  setFilteredCountries: Dispatch<SetStateAction<Country[]>>;
+  filteredCountries: CountryResponse[];
+  setFilteredCountries: Dispatch<SetStateAction<CountryResponse[]>>;
   filterByCountryName: (value: string) => void;
   filterByRegion: (region: string) => void;
-  getCountryByAlphaCode: (alphaCode: string) => Country | null;
-  getCountryNameByAlphaCode: (code: string) => string;
+  getCountryByCode: (cca3: string) => CountryResponse | null;
+  getCountryNameByCode: (cca3: string) => string;
   reset: () => void;
 }

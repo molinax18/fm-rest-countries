@@ -1,13 +1,12 @@
-import type { Country } from "@/types/country";
+import type { CountryResponse } from "@/types/country";
 import { useCountriesContext } from "@/contexts/CountriesContext";
 import { useNavigationContext } from "@/contexts/NavigationContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
 
 export default function CountryInfo({
-  flag,
+  flags,
   name,
-  nativeName,
-  topLevelDomain,
+  tld,
   population,
   currencies,
   region,
@@ -15,24 +14,24 @@ export default function CountryInfo({
   subregion,
   capital,
   borders,
-}: Country) {
+}: CountryResponse) {
   const { backgroundTheme } = useThemeContext();
-  const { getCountryNameByAlphaCode } = useCountriesContext();
+  const { getCountryNameByCode } = useCountriesContext();
   const { navigateToDetails } = useNavigationContext();
 
   return (
     <section className="flex flex-col gap-10 lg:flex-row lg:justify-center">
       <img
-        src={flag}
-        alt={name}
+        src={flags.svg}
+        alt={flags.alt}
         className="self-start flex-1 object-contain max-h-72 lg:max-w-2xl xl:max-h-96"
       />
       <article className="flex-1 flex flex-col gap-y-6 lg:justify-center">
-        <h1 className="text-3xl font-bold">{name}</h1>
+        <h1 className="text-3xl font-bold">{name.common}</h1>
         <ul className="grid gap-6 sm:grid-cols-2">
           <div className="flex flex-col gap-y-2 [&_span]:font-semibold">
             <li>
-              <span>Native name</span>: {nativeName}
+              <span>Native name</span>: {name.nativeName.eng?.common}
             </li>
             <li>
               <span>Population</span>: {population.toLocaleString("en-US")}
@@ -50,15 +49,19 @@ export default function CountryInfo({
 
           <div className="flex flex-col gap-y-2 [&_span]:font-semibold">
             <li>
-              <span>Top Level Domain</span>: {topLevelDomain}
+              <span>Top Level Domain</span>: {tld}
             </li>
             <li>
               <span>Currencies</span>:{" "}
-              {currencies?.map((c) => c.name).join(", ") ?? "None"}
+              {currencies
+                ? Object.values(currencies)
+                    .map((c) => c.name)
+                    .join(", ")
+                : "None"}
             </li>
             <li>
               <span>Languages</span>:{" "}
-              {languages?.map((lan) => lan.name).join(", ") ?? "None"}
+              {languages ? Object.values(languages).join(", ") : "None"}
             </li>
           </div>
         </ul>
@@ -72,7 +75,7 @@ export default function CountryInfo({
                   onClick={() => navigateToDetails(b)}
                   className={`interactive-shape cursor-pointer tr-opacity ${backgroundTheme.semi}`}
                 >
-                  {getCountryNameByAlphaCode(b)}
+                  {getCountryNameByCode(b)}
                 </button>
               ))}
             </div>

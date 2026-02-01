@@ -15,7 +15,7 @@ export default function CountryList({ maxDisplay = 7 }: Props) {
         <span>Countries not found.</span>
       ) : (
         countriesToDisplay.map((c) => (
-          <CountryDetailsCard key={c.name} {...c} />
+          <CountryDetailsCard key={c.cca3} {...c} />
         ))
       )}
     </section>

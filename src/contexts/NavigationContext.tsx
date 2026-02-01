@@ -10,8 +10,8 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
     setView({ type: "home" });
   }
 
-  function navigateToDetails(alphaCode: string) {
-    setView({ type: "details", alphaCode });
+  function navigateToDetails(cca3: string) {
+    setView({ type: "details", cca3 });
   }
 
   return (
