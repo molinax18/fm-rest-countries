@@ -17,16 +17,6 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
     initialData: countries,
   });
   const [filteredCountries, setFilteredCountries] = useState(data);
-  const fuse = new Fuse(data, {
-    keys: [
-      "name.common",
-      "name.official",
-      "cca3",
-      "name.nativeName.spa.common",
-      "name.nativeName.fra.common",
-    ],
-    threshold: 0.3,
-  });
 
   function filterByCountryName(value: string) {
     if (!value) {
@@ -34,6 +24,16 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    const fuse = new Fuse(data, {
+      keys: [
+        "name.common",
+        "name.official",
+        "cca3",
+        "name.nativeName.spa.common",
+        "name.nativeName.fra.common",
+      ],
+      threshold: 0.3,
+    });
     const results = fuse.search(value);
     setFilteredCountries(results.map((result) => result.item));
   }
