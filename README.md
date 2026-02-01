@@ -1,75 +1,171 @@
-# React + TypeScript + Vite
+# REST Countries API with Color Theme Switcher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive web application that displays information about countries worldwide. Built with React, TypeScript, and Tailwind CSS, this application fetches data from the REST Countries API and provides an intuitive interface for exploring countries with advanced filtering and search capabilities.
 
-Currently, two official plugins are available:
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Overview](#overview)
+  - [The Challenge](#the-challenge)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+  - [Links](#links)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
+- [Tech Stack](#tech-stack)
+- [Key Features & Implementation](#key-features--implementation)
+- [What I Learned](#what-i-learned)
+- [Author](#author)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Overview
 
-Note: This will impact Vite dev & build performances.
+### The Challenge
 
-## Expanding the ESLint configuration
+Users should be able to:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+### Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Global Country Database**: Browse and explore detailed information about all countries
+- **Advanced Search**: Real-time search functionality powered by Fuse.js for fast, fuzzy matching
+- **Regional Filtering**: Filter countries by continent/region
+- **Country Details**: View comprehensive information including:
+  - Capital city, native name, and official name
+  - Population, area, and language(s)
+  - Currency information
+  - Border countries with clickable navigation
+- **Theme Switcher**: Toggle between light and dark modes for comfortable viewing
+- **Responsive Design**: Fully responsive layout that works seamlessly on mobile, tablet, and desktop
+- **Performance Optimized**: Efficient state management with Context API and React Query for data fetching
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### Screenshots
+
+**Countries List View**
+![Countries List](./public/screenshots/countries.png)
+
+**Country Details View**
+![Country Details](./public/screenshots/country.png)
+
+### Links
+
+- **Repository**: [https://github.com/molinax18/fm-rest-countries](https://github.com/molinax18/fm-rest-countries)
+- **Live Demo**: [https://molinax18.github.io/fm-rest-countries/](https://molinax18.github.io/fm-rest-countries/)
+- **Frontend Mentor Challenge**: [https://www.frontendmentor.io/profile/molinax18](https://www.frontendmentor.io/profile/molinax18)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/molinax18/fm-rest-countries.git
+cd fm-rest-countries
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install
 ```
+
+### Running the Project
+
+**Development mode:**
+
+```bash
+npm run dev
+```
+
+The application will start at `http://localhost:5173`
+
+**Build for production:**
+
+```bash
+npm run build
+```
+
+**Preview production build:**
+
+```bash
+npm run preview
+```
+
+**Deploy to GitHub Pages:**
+
+```bash
+npm run deploy
+```
+
+## Tech Stack
+
+- **Frontend Framework**: [React 19](https://react.dev/) - Modern UI library with latest features
+- **Language**: [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- **Build Tool**: [Vite](https://vitejs.dev/) - Next generation frontend tooling
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+- **Data Fetching**: [React Query](https://tanstack.com/query/latest) - Powerful server state management
+- **Search**: [Fuse.js](https://fusejs.io/) - Lightweight fuzzy-search library
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+- **Code Quality**: [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
+- **Deployment**: [GitHub Pages](https://pages.github.com/)
+
+## Key Features & Implementation
+
+### State Management with Context API
+
+The application uses React Context API to manage global state:
+
+- **ThemeContext**: Handles light/dark mode switching
+- **CountriesContext**: Manages countries data, filtering, and search
+- **NavigationContext**: Manages page navigation and routing
+- **DropdownContext**: Manages dropdown component state
+
+### Search and Filter
+
+- Implemented fuzzy search using Fuse.js for better user experience
+- Real-time filtering by country name and region
+- Optimized performance with debouncing and memoization
+
+### Responsive Design
+
+- Mobile-first approach using Tailwind CSS
+- Responsive grid layout for country cards
+- Touch-friendly interface for all devices
+
+### API Integration
+
+- Fetches data from the [REST Countries API](https://restcountries.com/)
+- Implements error handling and loading states
+- Efficient caching with React Query
+
+## What I Learned
+
+- **Advanced React Patterns**: Context API, custom hooks, and component composition
+- **TypeScript**: Type safety and better developer experience with strict typing
+- **State Management**: Effective data flow management without external libraries
+- **Tailwind CSS**: Utility-first CSS approach for rapid UI development
+- **Performance Optimization**: Lazy loading, memoization, and efficient re-rendering
+- **Modern Build Tools**: Vite's speed and hot module replacement
+- **Testing Edge Cases**: Handling API errors, loading states, and empty results
+- **Accessibility**: Building inclusive UI components for all users
+- **GitHub Pages Deployment**: Hosting static sites with custom domain configuration
+
+## Author
+
+- **LinkedIn**: [https://www.linkedin.com/in/ariel-molina-ortiz-b1a443271/](https://www.linkedin.com/in/ariel-molina-ortiz-b1a443271/)
+- **GitHub**: [https://github.com/molinax18](https://github.com/molinax18)
+- **Frontend Mentor**: [https://www.frontendmentor.io/profile/molinax18](https://www.frontendmentor.io/profile/molinax18)
