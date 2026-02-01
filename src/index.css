@@ -34,7 +34,7 @@
   }
 
   .interactive-shape {
-    @apply py-3 px-8 rounded-md;
+    @apply py-3 px-8 rounded-md shadow-md;
   }
 
   .tr-opacity {

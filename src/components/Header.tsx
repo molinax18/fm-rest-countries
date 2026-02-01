@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <header
-      className={`container flex items-center justify-between ${backgroundTheme.semi}`}
+      className={`container flex items-center justify-between shadow-md ${backgroundTheme.semi}`}
     >
       <h1 className="font-bold">Where in the world?</h1>
 

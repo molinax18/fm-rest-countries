@@ -17,7 +17,7 @@ export default function CountryDetailsCard({
 
   return (
     <article
-      className={`flex flex-col rounded-md overflow-hidden cursor-pointer tr-opacity ${backgroundTheme.semi}`}
+      className={`flex flex-col rounded-md overflow-hidden cursor-pointer tr-opacity shadow-lg ${backgroundTheme.semi}`}
       onClick={() => {
         if (!isLoading) navigateToDetails(cca3);
       }}
@@ -30,7 +30,7 @@ export default function CountryDetailsCard({
         />
       </header>
       <section className="flex flex-col gap-y-3 py-8 px-4">
-        <h3 className="font-bold text-xl">{name.common}</h3>
+        <h2 className="font-bold text-xl">{name.common}</h2>
         <ul>
           <li>
             <span className="font-semibold">Population:</span>{" "}

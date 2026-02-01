@@ -24,7 +24,7 @@ export default function CountryInfo({
       <img
         src={flags.svg}
         alt={flags.alt}
-        className="self-start object-cover max-h-72 lg:max-w-104]"
+        className="self-start object-cover max-h-72 drop-shadow-md lg:max-w-104"
       />
       <article className="flex flex-col gap-y-6 lg:max-w-1/2 lg:justify-center">
         <h1 className="text-3xl font-bold">{name.common}</h1>
@@ -67,7 +67,7 @@ export default function CountryInfo({
         </ul>
         {borders && borders.length > 0 && (
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center">
-            <h3 className="font-bold whitespace-nowrap">Border Countries:</h3>
+            <h2 className="font-bold whitespace-nowrap">Border Countries:</h2>
             <div className="flex flex-wrap gap-3">
               {borders?.map((b) => (
                 <button
