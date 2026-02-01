@@ -18,7 +18,13 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
   });
   const [filteredCountries, setFilteredCountries] = useState(data);
   const fuse = new Fuse(data, {
-    keys: ["name"],
+    keys: [
+      "name.common",
+      "name.official",
+      "cca3",
+      "name.nativeName.spa.common",
+      "name.nativeName.fra.common",
+    ],
     threshold: 0.3,
   });
 
