@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 import type { CountryResponse } from "./country";
 
 export interface CountriesState {
+  isLoading: boolean;
   filteredCountries: CountryResponse[];
   setFilteredCountries: Dispatch<SetStateAction<CountryResponse[]>>;
   filterByCountryName: (value: string) => void;

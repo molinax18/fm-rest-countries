@@ -11,7 +11,7 @@ const countries: CountryResponse[] = data;
 const CountriesContext = createContext<CountriesState | null>(null);
 
 export function CountriesProvider({ children }: { children: ReactNode }) {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["countries"],
     queryFn: getCountries,
     initialData: countries,
@@ -61,6 +61,7 @@ export function CountriesProvider({ children }: { children: ReactNode }) {
   return (
     <CountriesContext.Provider
       value={{
+        isLoading,
         filterByCountryName,
         filteredCountries,
         setFilteredCountries,

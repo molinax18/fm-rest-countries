@@ -6,14 +6,15 @@ import SearchInput from "./SearchInput";
 import SelectFilter from "./SelectFilter";
 
 export default function CountriesFilter() {
-  const { filterByCountryName, filterByRegion } = useCountriesContext();
+  const { filterByCountryName, filterByRegion, isLoading } =
+    useCountriesContext();
 
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
-    filterByCountryName(event.target.value);
+    if (!isLoading) filterByCountryName(event.target.value);
   }
 
   function handleRegion(region: string) {
-    filterByRegion(region);
+    if (!isLoading) filterByRegion(region);
   }
 
   return (

@@ -1,6 +1,7 @@
 import type { CountryResponse } from "@/types/country";
 import { useNavigationContext } from "@/contexts/NavigationContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
+import { useCountriesContext } from "@/contexts/CountriesContext";
 
 export default function CountryDetailsCard({
   flags,
@@ -10,13 +11,16 @@ export default function CountryDetailsCard({
   capital,
   cca3,
 }: CountryResponse) {
+  const { isLoading } = useCountriesContext();
   const { navigateToDetails } = useNavigationContext();
   const { backgroundTheme } = useThemeContext();
 
   return (
     <article
       className={`flex flex-col rounded-md overflow-hidden cursor-pointer tr-opacity ${backgroundTheme.semi}`}
-      onClick={() => navigateToDetails(cca3)}
+      onClick={() => {
+        if (!isLoading) navigateToDetails(cca3);
+      }}
     >
       <header className="flex-1">
         <img
